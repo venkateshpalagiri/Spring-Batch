@@ -7,6 +7,7 @@ import org.springframework.batch.item.file.LineMapper;
 import org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper;
 import org.springframework.batch.item.file.mapping.DefaultLineMapper;
 import org.springframework.batch.item.file.transform.DelimitedLineTokenizer;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.FileSystemResource;
 
@@ -20,6 +21,8 @@ public class CsvBatchConfig {
         fileItemReader.setResource(new FileSystemResource("src/main/resource/employees.csv"));
         fileItemReader.setStrict(false);
         fileItemReader.setLineMapper(lineMapper());
+
+        return fileItemReader;
     }
 
     private LineMapper<Employees> lineMapper() {
@@ -40,6 +43,10 @@ public class CsvBatchConfig {
     }
 
     //    create Processor
+    @Bean
+    public EmployeesProcessor employeesProcessor(){
+        return new EmployeesProcessor();
+    }
 
     //    create Writer
 
