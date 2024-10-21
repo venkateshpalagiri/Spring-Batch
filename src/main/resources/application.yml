@@ -8,7 +8,7 @@ spring:
       maximum-pool-size: 20
 
   jpa:
-    database-platform: org.hibernate.dialect.MySQLDialect
+    database-platform: org.hibernate.dialect.MySQL5Dialect
     hibernate:
       ddl-auto: update
 
@@ -16,4 +16,8 @@ spring:
       hibernate:
       show-sql: true
       format_sql: true
-      dialect: org.hibernate.dialect.MySQLDialect
+      dialect: org.hibernate.dialect.MySQL5Dialect
+
+  batch:
+    jdbc:
+      initialize-schema: ALWAYS
